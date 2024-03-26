@@ -1,96 +1,102 @@
 [
-    {
-        "id": 1,
-        "name": "Jazz Nights",
-        "address": "123 Venue St, Jazztown",
-        "start_time": "8:00 PM",
-        "map": "URL_to_Map_Jazz_Nights",
-        "images": [
-            "URL_to_Image1_Jazz_Nights",
-            "URL_to_Image2_Jazz_Nights"
-        ],
-        "video_playlist": "URL_to_Video_Playlist_Jazz_Nights",
-        "social_media": "URL_to_Social_Media_Jazz_Nights",
-        "ticket_price": "$30",
-        "ticket_purchase_link": "URL_to_Purchase_Jazz_Nights",
-        "reservation_contact": "123-456-7890"
-    },
-    {
-        "id": 2,
-        "name": "Rock Revolution",
-        "address": "456 Concert Ave, Rockville",
-        "start_time": "9:00 PM",
-        "map": "URL_to_Map_Rock_Revolution",
-        "images": [
-            "URL_to_Image1_Rock_Revolution"
-        ],
-        "video_playlist": "URL_to_Video_Rock_Revolution",
-        "social_media": "URL_to_Social_Media_Rock_Revolution",
-        "ticket_price": "Free",
-        "ticket_purchase_link": "",
-        "reservation_contact": "987-654-3210"
-    },
-    {
-        "id": 3,
-        "name": "Classical Evening",
-        "address": "789 Symphony Rd, Classic City",
-        "start_time": "7:00 PM",
-        "map": "URL_to_Map_Classical_Evening",
-        "images": [
-            "URL_to_Image1_Classical_Evening",
-            "URL_to_Image2_Classical_Evening",
-            "URL_to_Image3_Classical_Evening"
-        ],
-        "video_playlist": "URL_to_Playlist_Classical_Evening",
-        "social_media": "URL_to_Social_Media_Classical_Evening",
-        "ticket_price": "$50",
-        "ticket_purchase_link": "URL_to_Purchase_Classical_Evening",
-        "reservation_contact": "555-123-4567"
-    },
-    {
-        "id": 4,
-        "name": "Electronic Beats Festival",
-        "address": "101 DJ Blvd, Dance City",
-        "start_time": "10:00 PM",
-        "map": "URL_to_Map_Electronic_Beats",
-        "images": [
-            "URL_to_Image_Electronic_Beats"
-        ],
-        "video_playlist": "URL_to_Video_Electronic_Beats",
-        "social_media": "URL_to_Social_Media_Electronic_Beats",
-        "ticket_price": "$40",
-        "ticket_purchase_link": "URL_to_Purchase_Electronic_Beats",
-        "reservation_contact": "666-777-8888"
-    },
-    {
-        "id": 5,
-        "name": "Folklore Nights",
-        "address": "202 Acoustic Ave, Folk Town",
-        "start_time": "6:00 PM",
-        "map": "URL_to_Map_Folklore_Nights",
-        "images": [
-            "URL_to_Image1_Folklore_Nights"
-        ],
-        "video_playlist": "URL_to_Video_Folklore_Nights",
-        "social_media": "URL_to_Social_Media_Folklore_Nights",
-        "ticket_price": "$20",
-        "ticket_purchase_link": "URL_to_Purchase_Folklore_Nights",
-        "reservation_contact": "222-333-4444"
-    },
-    {
-        "id":6,
-        "name": "Pop Music Extravaganza",
-        "address": "303 Pop Ave, Pop City",
-        "start_time": "8:30 PM",
-        "map": "URL_to_Map_Pop_Music",
-        "images": [
-            "URL_to_Image1_Pop_Music",
-            "URL_to_Image2_Pop_Music"
-        ],
-        "video_playlist": "URL_to_Video_Pop_Music",
-        "social_media": "URL_to_Social_Media_Pop_Music",
-        "ticket_price": "Free",
-        "ticket_purchase_link": "",
-        "reservation_contact": "999-888-7777"
-    }
+  {
+    "id": 1,
+    "name": "Jazz Nights",
+    "address": "123 Venue St, Jazztown",
+    "start_time": "8:00 PM",
+    "date": "2024-04-15",
+    "map": "https://maps.app.goo.gl/n4YUafR87Wy15obz8",
+    "images": [
+      "https://i.imgur.com/BON28ZTb.jpg",
+      "https://i.imgur.com/A9MjelAb.jpg"
+    ],
+    "video_playlist": "https://www.youtube.com/channel/UCm6bCPvnJVXFD4RJaLL7BgA",
+    "social_media": "https://github.com/CaioPinho9",
+    "ticket_price": "$30",
+    "ticket_purchase_link": "https://www.linkedin.com/in/caio-b-pinho/",
+    "reservation_contact": "123-456-7890"
+  },
+  {
+    "id": 2,
+    "name": "Rock Revolution",
+    "address": "456 Concert Ave, Rockville",
+    "start_time": "9:00 PM",
+    "date": "2024-04-20",
+    "map": "https://maps.app.goo.gl/n4YUafR87Wy15obz8",
+    "images": [
+      "URL_to_Image1_Rock_Revolution"
+    ],
+    "video_playlist": "https://www.youtube.com/channel/UCm6bCPvnJVXFD4RJaLL7BgA",
+    "social_media": "https://github.com/CaioPinho9",
+    "ticket_price": "Free",
+    "ticket_purchase_link": "",
+    "reservation_contact": "987-654-3210"
+  },
+  {
+    "id": 3,
+    "name": "Classical Evening",
+    "address": "789 Symphony Rd, Classic City",
+    "start_time": "7:00 PM",
+    "date": "2024-05-05",
+    "map": "https://maps.app.goo.gl/n4YUafR87Wy15obz8",
+    "images": [
+      "URL_to_Image1_Classical_Evening",
+      "URL_to_Image2_Classical_Evening",
+      "URL_to_Image3_Classical_Evening"
+    ],
+    "video_playlist": "https://www.youtube.com/channel/UCm6bCPvnJVXFD4RJaLL7BgA",
+    "social_media": "https://github.com/CaioPinho9",
+    "ticket_price": "$50",
+    "ticket_purchase_link": "https://www.linkedin.com/in/caio-b-pinho/",
+    "reservation_contact": "555-123-4567"
+  },
+  {
+    "id": 4,
+    "name": "Electronic Beats Festival",
+    "address": "101 DJ Blvd, Dance City",
+    "start_time": "10:00 PM",
+    "date": "2024-05-12",
+    "map": "https://maps.app.goo.gl/n4YUafR87Wy15obz8",
+    "images": [
+      "URL_to_Image_Electronic_Beats"
+    ],
+    "video_playlist": "https://www.youtube.com/channel/UCm6bCPvnJVXFD4RJaLL7BgA",
+    "social_media": "https://github.com/CaioPinho9",
+    "ticket_price": "$40",
+    "ticket_purchase_link": "https://www.linkedin.com/in/caio-b-pinho/",
+    "reservation_contact": "666-777-8888"
+  },
+  {
+    "id": 5,
+    "name": "Folklore Nights",
+    "address": "202 Acoustic Ave, Folk Town",
+    "start_time": "6:00 PM",
+    "date": "2024-04-25",
+    "map": "https://maps.app.goo.gl/n4YUafR87Wy15obz8",
+    "images": [
+      "URL_to_Image1_Folklore_Nights"
+    ],
+    "video_playlist": "https://www.youtube.com/channel/UCm6bCPvnJVXFD4RJaLL7BgA",
+    "social_media": "https://github.com/CaioPinho9",
+    "ticket_price": "$20",
+    "ticket_purchase_link": "https://www.linkedin.com/in/caio-b-pinho/",
+    "reservation_contact": "222-333-4444"
+  },
+  {
+    "id": 6,
+    "name": "Pop Music Extravaganza",
+    "address": "303 Pop Ave, Pop City",
+    "start_time": "8:30 PM",
+    "date": "2024-03-30",
+    "map": "https://maps.app.goo.gl/n4YUafR87Wy15obz8",
+    "images": [
+      "URL_to_Image1_Pop_Music",
+      "URL_to_Image2_Pop_Music"
+    ],
+    "video_playlist": "https://www.youtube.com/channel/UCm6bCPvnJVXFD4RJaLL7BgA",
+    "social_media": "https://github.com/CaioPinho9",
+    "ticket_price": "Free",
+    "ticket_purchase_link": "",
+    "reservation_contact": "999-888-7777"
+  }
 ]
