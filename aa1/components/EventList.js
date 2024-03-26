@@ -2,28 +2,51 @@ import {Text, View, StyleSheet, Button, ActivityIndicator, FlatList, TouchableOp
 import FavoriteButton from "./FavoriteButton";
 import DisplayImage from "./DisplayImage";
 
-export default function EventList({navigation, data, loading}) {
-    let sortedData;
-    try {
-        sortedData = [...data].sort((a, b) => {
-            const dateA = new Date(a.date + ' ' + a.start_time);
-            const dateB = new Date(b.date + ' ' + b.start_time);
-            return dateA - dateB;
-        });
-    } catch (_) {
-        sortedData = []
+function parseDateTime(dateStr, timeStr) {
+    const [time, modifier] = timeStr.split(' ');
+    let [hours, minutes] = time.split(':');
+
+    // Convert hours to 24-hour format if necessary
+    if (modifier === 'PM' && hours !== '12') {
+        hours = parseInt(hours, 10) + 12;
+    } else if (modifier === 'AM' && hours === '12') {
+        hours = '00';
     }
 
+    // Reconstruct the date string with the 24-hour time format
+    const dateTimeStr = `${dateStr} ${hours}:${minutes}:00`;
+
+    // Create a Date object from the reconstructed string
+    const dateTime = new Date(dateTimeStr);
+
+    if (isNaN(dateTime.getTime())) {
+        console.error(`Invalid date/time format for: ${dateTimeStr}`);
+        return new Date(0); // Return epoch start as a fallback
+    }
+
+    return dateTime;
+}
+
+function sortEvents(events) {
+    return events.sort((a, b) => {
+        const dateTimeA = parseDateTime(a.date, a.start_time);
+        const dateTimeB = parseDateTime(b.date, b.start_time);
+
+        return dateTimeA - dateTimeB;
+    });
+}
+
+export default function EventList({navigation, data, loading, favorites, setFavorites}) {
     return (<View style={styles.container}>
         {loading ? (<View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color="#1496de"/>
-        </View>) : sortedData.length > 0 ? (<FlatList
-            data={sortedData}
+        </View>) : data.length > 0 ? (<FlatList
+            data={sortEvents(data)}
             keyExtractor={item => item.id.toString()}
             renderItem={({item}) => (<TouchableOpacity style={styles.eventContainer} onPress={() => navigation.navigate('Details', {event: item})}>
                 <View style={styles.row}>
                     <Text style={styles.event}>{item.name}</Text>
-                    <FavoriteButton event={item}/>
+                    <FavoriteButton event={item} favorites={favorites} setFavorites={setFavorites}/>
                 </View>
                 <DisplayImage imageUrl={item.images ? item.images[0] : null} style={styles.eventImage}/>
                 <Text style={styles.event}>{item.address}</Text>
@@ -36,11 +59,12 @@ export default function EventList({navigation, data, loading}) {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 15
+        padding: 15,
+        height: '100%'
     }, event: {
         fontSize: 18, height: 44, display: 'flex', alignItems: 'center', color: '#1496de'
     }, row: {
-        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,
+        flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 10,
     }, loadingContainer: {
         flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20
     }, eventContainer: {

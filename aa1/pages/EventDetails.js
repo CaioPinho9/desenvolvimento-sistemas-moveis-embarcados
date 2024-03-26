@@ -4,13 +4,13 @@ import FavoriteButton from "../components/FavoriteButton";
 import LinkButton from "../components/LinkButton";
 import DisplayImage from "../components/DisplayImage";
 
-export default function EventDetails({route, navigation}) {
+export default function EventDetails({route, navigation, favorites, setFavorites}) {
     const {event} = route.params;
 
     return (<ScrollView contentContainerStyle={styles.container}>
         <View style={styles.eventInfo}>
             <Text style={styles.eventName}>{event.name}</Text>
-            <FavoriteButton event={event}/>
+            <FavoriteButton event={event} favorites={favorites} setFavorites={setFavorites}/>
         </View>
 
         {event.images.map((image, index) => (<DisplayImage key={index} imageUrl={image} style={styles.eventImage}/>))}
@@ -36,37 +36,17 @@ export default function EventDetails({route, navigation}) {
 const styles = StyleSheet.create({
     container: {
         padding: 15,
-    },
-    eventName: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        color: '#1496de',
-    },
-    eventDetails: {
-        fontSize: 18,
-        marginBottom: 5,
-    },
-    eventImage: {
-        width: '100%',
-        height: 200,
-        resizeMode: 'contain',
-        marginBottom: 10,
-    },
-    eventInfo: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 10,
-    },
-    pressable: {
-        backgroundColor: '#1496de',
-        padding: 10,
-        alignItems: 'center',
-    },
-    text: {
-        color: 'white',
-        fontSize: 18,
+    }, eventName: {
+        fontSize: 24, fontWeight: 'bold', marginBottom: 10, color: '#1496de',
+    }, eventDetails: {
+        fontSize: 18, marginBottom: 5,
+    }, eventImage: {
+        width: '100%', height: 200, resizeMode: 'contain', marginBottom: 10,
+    }, eventInfo: {
+        display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10,
+    }, pressable: {
+        backgroundColor: '#1496de', padding: 10, alignItems: 'center',
+    }, text: {
+        color: 'white', fontSize: 18,
     }
 });

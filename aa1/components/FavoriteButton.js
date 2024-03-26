@@ -1,38 +1,25 @@
 import React, {useState, useEffect} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import {TouchableOpacity} from "react-native";
 
-export default function FavoriteButton({event}) {
+export default function FavoriteButton({event, favorites, setFavorites}) {
     const [isFavorited, setIsFavorited] = useState(false);
 
     useEffect(() => {
         checkFavoriteStatus();
-    }, []);
+    }, [favorites]);
 
     const checkFavoriteStatus = async () => {
-        try {
-            const favorites = JSON.parse(await AsyncStorage.getItem('favorites')) || [];
-            setIsFavorited(favorites.some(favEvent => favEvent.id === event.id));
-        } catch (error) {
-            console.error(error);
-        }
+        setIsFavorited(favorites.some(favEvent => favEvent.id === event.id));
     };
 
-    const handleFavoritePress = async () => {
-        try {
-            const favorites = JSON.parse(await AsyncStorage.getItem('favorites')) || [];
-            if (isFavorited) {
-                const newFavorites = favorites.filter(favEvent => favEvent.id !== event.id);
-                await AsyncStorage.setItem('favorites', JSON.stringify(newFavorites));
-            } else {
-                favorites.push(event);
-                await AsyncStorage.setItem('favorites', JSON.stringify(favorites));
-            }
-            setIsFavorited(!isFavorited);
-        } catch (error) {
-            console.error(error);
+    const handleFavoritePress = () => {
+        if (isFavorited) {
+            setFavorites(favorites.filter(favEvent => favEvent.id !== event.id));
+        } else {
+            setFavorites([...favorites, event]);
         }
+        setIsFavorited(!isFavorited);
     };
 
     return (<TouchableOpacity onPress={handleFavoritePress}>
