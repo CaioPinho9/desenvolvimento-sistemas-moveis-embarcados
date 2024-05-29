@@ -1,19 +1,15 @@
-// Inicia o Express.js
 const express = require('express');
-const app = express();
-
-// Body Parser - usado para processar dados da requisição HTTP
 const bodyParser = require('body-parser');
+const router = require('./routes/credits_routes');
+
+const app = express();
+const port = 8083;
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Método HTTP GET /hello - envia a mensagem: Hello World
-app.get('/hello', (req, res) => {
-    res.send('Hello World');
-});
+app.use('/', router);
 
-// Inicia o Servidor na port 8083
-let port = 8083;
 app.listen(port, () => {
-    console.log('Servidor em execução na port: ' + port);
+    console.log('Server running on port: ' + port);
 });

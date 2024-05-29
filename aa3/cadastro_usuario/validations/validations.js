@@ -2,12 +2,13 @@ function isValidCPF(cpf) {
     return /^\d{11}$/.test(cpf);
 }
 
+const categories = ['student', 'teacher', 'TAE', 'visitor']
+
 function isValidCategory(category) {
-    const validCategories = ['estudante', 'professor', 'TAE', 'visitante'];
-    return validCategories.includes(category);
+    return categories.includes(category);
 }
 
-function validateUserInput(req, res, next) {
+function validateInput(req, res, next) {
     const {name, category, cpf} = req.body;
     if (!name || typeof name !== 'string') {
         return res.status(400).send('Invalid or missing name.');
@@ -15,11 +16,13 @@ function validateUserInput(req, res, next) {
     if (!category || typeof category !== 'string') {
         return res.status(400).send('Invalid or missing category.');
     }
-    isValidCategory(category);
+    if (!isValidCategory(category)) {
+        return res.status(400).send('Invalid category use one of: ' + categories.join(', '));
+    }
     if (!cpf || !isValidCPF(cpf)) {
         return res.status(400).send('Invalid or missing CPF.');
     }
     next();
 }
 
-module.exports = {isValidCPF, validateUserInput};
+module.exports = {isValidCPF, validateUserInput: validateInput};

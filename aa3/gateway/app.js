@@ -6,7 +6,9 @@ const logger = require('morgan');
 app.use(logger('dev'));
 
 function selectProxyHost(req) {
-    if (req.path.startsWith('/user'))
+    if (req.path.startsWith('/credits')) {
+        return 'http://localhost:8083/';
+    } else if (req.path.startsWith('/user'))
         return 'http://localhost:8084/';
     else if (req.path.startsWith('/Pontos'))
         return 'http://localhost:8090/';
@@ -16,7 +18,7 @@ function selectProxyHost(req) {
 app.use((req, res, next) => {
     const proxyHost = selectProxyHost(req);
     if (proxyHost == null)
-        res.status(404).send('Not found');
+        return res.status(404).send('Not found');
     else
         httpProxy(proxyHost)(req, res, next);
 });

@@ -7,14 +7,14 @@ exports.createUser = (req, res) => {
             if (err) {
                 if (err.code === 'SQLITE_CONSTRAINT') {
                     console.log("Error: Duplicate CPF");
-                    res.status(409).send('CPF already exists.');
+                    return res.status(409).send('CPF already exists.');
                 } else {
                     console.log("Error: " + err);
-                    res.status(500).send('Failed to register user.');
+                    return res.status(500).send('Failed to register user.');
                 }
             } else {
                 console.log('User created successfully!');
-                res.status(200).send('User created successfully!');
+                return res.status(200).send('User created successfully!');
             }
         });
 };
@@ -22,9 +22,9 @@ exports.getAllUsers = (req, res) => {
     db.all(`SELECT * FROM tb_user`, [], (err, result) => {
         if (err) {
             console.log("Error: " + err);
-            res.status(500).send('Failed to return users.');
+            return res.status(500).send('Failed to return users.');
         } else {
-            res.status(200).json(result);
+            return res.status(200).json(result);
         }
     });
 };
@@ -37,12 +37,12 @@ exports.getUserByCPF = (req, res) => {
     db.get(`SELECT * FROM tb_user WHERE cpf = ?`, req.params.cpf, (err, result) => {
         if (err) {
             console.log("Error: " + err);
-            res.status(500).send('Failed to return user.');
+            return res.status(500).send('Failed to return user.');
         } else if (result == null) {
             console.log("User not found.");
-            res.status(404).send('User not found.');
+            return res.status(404).send('User not found.');
         } else {
-            res.status(200).json(result);
+            return res.status(200).json(result);
         }
     });
 };
@@ -63,12 +63,12 @@ exports.updateUser = (req, res) => {
     db.run(`UPDATE tb_user SET name = COALESCE(?,name), category = COALESCE(?,category) WHERE cpf = ?`,
         [req.body.name, req.body.category, req.params.cpf], function (err) {
             if (err) {
-                res.status(500).send('Failed to update user.');
+                return res.status(500).send('Failed to update user.');
             } else if (this.changes === 0) {
                 console.log("User not found.");
-                res.status(404).send('User not found.');
+                return res.status(404).send('User not found.');
             } else {
-                res.status(200).send('User updated successfully!');
+                return res.status(200).send('User updated successfully!');
             }
         });
 };
@@ -80,12 +80,12 @@ exports.deleteUser = (req, res) => {
 
     db.run(`DELETE FROM tb_user WHERE cpf = ?`, req.params.cpf, function (err) {
         if (err) {
-            res.status(500).send('Failed to delete user.');
+            return res.status(500).send('Failed to delete user.');
         } else if (this.changes === 0) {
             console.log("User not found.");
-            res.status(404).send('User not found.');
+            return res.status(404).send('User not found.');
         } else {
-            res.status(200).send('User removed successfully!');
+            return res.status(200).send('User removed successfully!');
         }
     });
 };
