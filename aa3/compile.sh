@@ -1,0 +1,17 @@
+cd cadastro_acesso
+npm install
+cd ..
+cd cadastro_cancela
+npm install
+cd ..
+cd cadastro_creditos
+npm install
+cd ..
+cd cadastro_usuario
+npm install
+cd ..
+cd cadastro_vagas
+npm install
+cd ..
+cd gateway
+npm install

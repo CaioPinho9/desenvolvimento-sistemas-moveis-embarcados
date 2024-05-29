@@ -12,8 +12,8 @@ app.get('/hello', (req, res) => {
     res.send('Hello World');
 });
 
-// Inicia o Servidor na porta 8080
-let porta = 8080;
-app.listen(porta, () => {
-    console.log('Servidor em execução na porta: ' + porta);
+// Inicia o Servidor na port 8085
+let port = 8085;
+app.listen(port, () => {
+    console.log('Servidor em execução na port: ' + port);
 });

@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3');
 
-const db = new sqlite3.Database('./user.db', (err) => {
+const db = new sqlite3.Database('./database/user.db', (err) => {
     if (err) {
         console.log('ERROR: Failed to connect to SQLite.');
         throw err;
@@ -17,3 +17,5 @@ db.run(`CREATE TABLE IF NOT EXISTS tb_user
             throw err;
         }
     });
+
+module.exports = {db};
