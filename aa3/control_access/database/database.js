@@ -11,7 +11,8 @@ const db = new sqlite3.Database('./database/access.db', (err) => {
 db.run(`CREATE TABLE IF NOT EXISTS tb_access (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     cpf INTEGER NOT NULL, 
-    place TEXT NOT NULL, 
+    place TEXT NOT NULL,
+    enter BOOLEAN NOT NULL,
     time TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`,
 [], (err) => {
     if (err) {
