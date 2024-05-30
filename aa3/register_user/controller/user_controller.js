@@ -48,10 +48,6 @@ exports.getUserByCPF = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-    if (!isValidCPF(req.params.cpf)) {
-        return res.status(400).send('Invalid CPF format.');
-    }
-
     const {name, category} = req.body;
     if (name && typeof name !== 'string') {
         return res.status(400).send('Invalid name.');

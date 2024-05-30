@@ -25,4 +25,4 @@ function validateInput(req, res, next) {
     next();
 }
 
-module.exports = {isValidCPF, validateUserInput: validateInput};
+module.exports = {isValidCPF, validateInput: validateInput};
