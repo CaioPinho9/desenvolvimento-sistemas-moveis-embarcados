@@ -33,7 +33,7 @@ const handleUserCredits = async (cpf, category) => {
 };
 
 const openGate = async () => {
-    const response = await fetch(`http://localhost:8080/gate/open`, { method: 'POST' });
+    const response = await fetch(`http://localhost:8083/gate/open`, { method: 'POST' });
     if (!response.ok) {
         const message = await response.text();
         throw new Error(`Failed to open gate: ${response.status} ${message}`);
