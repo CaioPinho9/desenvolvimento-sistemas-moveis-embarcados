@@ -6,11 +6,13 @@ const logger = require('morgan');
 app.use(logger('dev'));
 
 function selectProxyHost(req) {
-    if (req.path.startsWith('/credits')) {
+    if (req.path.startsWith('/user'))
+        return 'http://localhost:8081/';
+    else if (req.path.startsWith('/gate')) {
         return 'http://localhost:8083/';
-    } else if (req.path.startsWith('/user'))
+    } else if (req.path.startsWith('/credits')) {
         return 'http://localhost:8084/';
-    else if (req.path.startsWith('/parking'))
+    } else if (req.path.startsWith('/parking'))
         return 'http://localhost:8085/';
     else return null;
 }

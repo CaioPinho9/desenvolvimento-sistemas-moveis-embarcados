@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./routes/credits_routes');
+const parkingRoutes = require('./routes/parking_routes');
 
 const app = express();
-const port = 8083;
+const port = 8084;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', router);
+app.use('/', parkingRoutes);
 
 app.listen(port, () => {
     console.log('Server running on port: ' + port);
