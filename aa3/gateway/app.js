@@ -10,8 +10,8 @@ function selectProxyHost(req) {
         return 'http://localhost:8083/';
     } else if (req.path.startsWith('/user'))
         return 'http://localhost:8084/';
-    else if (req.path.startsWith('/Pontos'))
-        return 'http://localhost:8090/';
+    else if (req.path.startsWith('/parking'))
+        return 'http://localhost:8085/';
     else return null;
 }
 

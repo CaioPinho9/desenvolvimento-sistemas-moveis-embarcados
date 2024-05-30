@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.post('/credits/:cpf', creditsController.createAccount);
 router.get('/credits/:cpf', creditsController.getCredits);
-router.put('/credits/:cpf/:credits', creditsController.transaction);
+router.patch('/credits/:cpf/:credits', creditsController.transaction);
 
 module.exports = router;
