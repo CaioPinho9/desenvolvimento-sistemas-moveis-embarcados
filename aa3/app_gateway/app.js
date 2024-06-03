@@ -11,8 +11,6 @@ function selectProxyHost(req) {
         return 'http://localhost:8081/';
     } else if (req.path.startsWith('/credits')) {
         return 'http://localhost:8082/';
-    } else if (req.path.startsWith('/gate')) {
-        return 'http://localhost:8083/';
     } else if (req.path.startsWith('/parking')) {
         return 'http://localhost:8084/';
     } else if (req.path.startsWith('/user'))

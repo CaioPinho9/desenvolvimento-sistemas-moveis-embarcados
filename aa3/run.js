@@ -3,6 +3,7 @@ const {spawn} = require('child_process');
 const apps = [
     {name: 'app_gateway', port: 8080},
     {name: 'control_access', port: 8082},
+    {name: 'control_gate', port: 8083},
     {name: 'control_credits', port: 8084},
     {name: 'control_parking', port: 8085},
     {name: 'register_user', port: 8081},
