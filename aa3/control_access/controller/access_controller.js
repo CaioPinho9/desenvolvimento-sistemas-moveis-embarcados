@@ -56,12 +56,12 @@ exports.enterParking = async (req, res) => {
         const user = await fetchJson(`http://localhost:8080/user/${cpf}`);
         const parking = await fetchJson(`http://localhost:8080/parking/${place}`);
 
-        if (parking.available_parkings <= 0) {
+        if (parking.available_parking <= 0) {
             return res.status(404).send('Parking spot not available.');
         }
 
-        await handleParkingAvailability(place, true);
         await handleUserCredits(cpf, user.category);
+        await handleParkingAvailability(place, true);
         await openGate();
         registerAccess(cpf, place, true, res, 'Access granted.');
     } catch (error) {
