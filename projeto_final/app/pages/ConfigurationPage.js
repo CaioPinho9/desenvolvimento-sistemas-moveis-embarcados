@@ -100,27 +100,29 @@ export default function ConfigurationPage({navigation}) {
                 value={lightSensitivity}
                 onValueChange={setLightSensitivity}
             />
+            <View style={styles.divider} />
             <Text>Colors</Text>
             <View style={styles.colorContainer}>
                 <View style={styles.colorButton}>
-                    <Text>R</Text>
+                    <Text style={{color: 'red'}}>R</Text>
                     <TouchableOpacity style={styles.toggleButton} onPress={() => setRed(!red)}>
                         <Text>{red ? 1 : 0}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.colorButton}>
-                    <Text>G</Text>
+                    <Text style={{color: 'green'}}>G</Text>
                     <TouchableOpacity style={styles.toggleButton} onPress={() => setGreen(!green)}>
                         <Text>{green ? 1 : 0}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.colorButton}>
-                    <Text>B</Text>
+                    <Text style={{color: 'blue'}}>B</Text>
                     <TouchableOpacity style={styles.toggleButton} onPress={() => setBlue(!blue)}>
                         <Text>{blue ? 1 : 0}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
+            <View style={{width: 40, height: 40, margin: 10, backgroundColor: `rgb(${red ? 255 : 0}, ${green ? 255 : 0}, ${blue ? 255 : 0})`}}/>
             <Button title="Add Color" onPress={addColor}/>
             <ScrollView style={styles.colorListContainer}>
                 {colors.map((color, index) => (
@@ -165,5 +167,11 @@ const styles = StyleSheet.create({
     colorButton: {
         flex: 1,
         alignItems: 'center',
+    },
+    divider: {
+        height: 1,
+        width: '100%',
+        backgroundColor: '#000',
+        marginVertical: 20,
     },
 });
