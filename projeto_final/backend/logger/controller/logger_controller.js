@@ -1,6 +1,7 @@
 const {db} = require("../database/database");
 
 exports.log = async (req, res) => {
+    console.log("Logging...")
     const {input, value} = req.body;
 
     db.run(`INSERT INTO tb_log(input, value) VALUES(?,?)`,
@@ -16,6 +17,7 @@ exports.log = async (req, res) => {
 };
 
 exports.getLogs = async (req, res) => {
+    console.log("Getting logs...")
     db.all(`SELECT * FROM tb_log`, [], (err, rows) => {
         if (err) {
             console.log("Error: " + err);
