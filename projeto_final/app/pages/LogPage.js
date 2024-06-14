@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View, StyleSheet, ScrollView} from 'react-native';
+import {Text, View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
 import {host} from "../config/network";
 
 export default function LogPage({navigation}) {
     const [logs, setLogs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchLogs = async () => {
+            setLoading(true)
             const response = await fetch(host + '/log');
 
             if (!response.ok) {
@@ -15,10 +17,20 @@ export default function LogPage({navigation}) {
 
             const data = await response.json();
             setLogs(data);
+            setLoading(false);
         };
 
         fetchLogs();
     }, []);
+
+    if (loading) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="#0000ff"/>
+                <Text>Loading...</Text>
+            </View>
+        );
+    }
 
     return (
         <ScrollView contentContainerStyle={styles.container}>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity, Button, Alert, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, Button, Alert, ScrollView, ActivityIndicator} from 'react-native';
 import {StyleSheet} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {host} from "../config/network";
@@ -79,6 +79,15 @@ export default function ConfigurationPage({navigation}) {
         setColors(colors.filter((_, i) => i !== index));
     };
 
+
+    if (loading) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="#0000ff"/>
+                <Text>Loading...</Text>
+            </View>
+        );
+    }
 
     return (
         <View style={styles.container}>
