@@ -48,14 +48,12 @@ export default function ConfigurationPage({navigation}) {
                     throw new Error(`${response.status}`);
                 }
 
-                const data = await response.json();
-
-                const config = data[0]
+                const config = await response.json();
 
                 setLightSensitivity(config.light_sensitivity);
 
                 try {
-                    setColors(JSON.parse(config.colors));
+                    setColors(config.colors);
                 } catch (error) {
                     console.error(error);
                     Alert.alert('Failed to parse colors.' + error.message);

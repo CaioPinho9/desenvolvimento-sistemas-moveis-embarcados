@@ -18,7 +18,7 @@ exports.log = async (req, res) => {
 
 exports.getLogs = async (req, res) => {
     console.log("Getting logs...")
-    db.all(`SELECT * FROM tb_log`, [], (err, rows) => {
+    db.all(`SELECT * FROM tb_log ORDER BY date DESC LIMIT 100`, [], (err, rows) => {
         if (err) {
             console.log("Error: " + err);
             return res.status(500).send('Failed to retrieve logs.');

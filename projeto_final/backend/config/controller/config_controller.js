@@ -25,11 +25,12 @@ exports.setConfiguration = async (req, res) => {
 
 exports.getConfigurations = async (req, res) => {
     console.log("Getting configurations...")
-    db.all(`SELECT light_sensitivity, colors FROM tb_config`, {}, function (err, rows) {
+    db.get(`SELECT light_sensitivity, colors FROM tb_config`, {}, function (err, rows) {
         if (err) {
             return res.status(500).send('Failed to retrieve configurations.');
         } else {
             console.log(rows)
+            rows.colors = JSON.parse(rows.colors);
             return res.status(200).json(rows);
         }
     });

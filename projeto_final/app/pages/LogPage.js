@@ -6,21 +6,23 @@ export default function LogPage({navigation}) {
     const [logs, setLogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const fetchLogs = async () => {
+        const response = await fetch(host + '/log');
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setLogs(data);
+    };
+
     useEffect(() => {
-        const fetchLogs = async () => {
-            setLoading(true)
-            const response = await fetch(host + '/log');
+        setLoading(true);
+        fetchLogs(); // Fetch logs immediately on component mount
+        setLoading(false);
+        const intervalId = setInterval(fetchLogs, 5000); // Fetch logs every 5 seconds
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            setLogs(data);
-            setLoading(false);
-        };
-
-        fetchLogs();
+        return () => clearInterval(intervalId); // Clean up on component unmount
     }, []);
 
     if (loading) {
